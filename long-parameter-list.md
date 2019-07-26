@@ -45,7 +45,7 @@ If you can obtain one parameter by asking another parameter for it, use **Replac
 Consider the following code:
 
 ```ruby
-def	statement_charges(cost, tax_rate, item_name, item_id)
+def statement_charges(cost, tax_rate, item_name, item_id)
   ...
 end
 ```
@@ -53,7 +53,7 @@ end
 Using *Replace Parameter with Query*, we can reduce the method parameters to happy space of two(2):
 
 ```ruby
-def	statement_charges(cost, item_name, item_id)
+def statement_charges(cost, item_name, item_id)
   cost = cost.value
   tax_rate = cost.tax_rate
   item_name = item.name
@@ -71,7 +71,7 @@ Rather than pulling data from an existing object to be passed, you can use **Pre
 Consider the following code:
 
 ```ruby
-def	statement_charges(cost, tax_rate, item_name, item_id)
+def statement_charges(cost, tax_rate, item_name, item_id)
   ...
 end
 ```
@@ -79,7 +79,7 @@ end
 Using *Preserve Whole Object*, we can reduce the method parameters to really happy space of one(1):
 
 ```ruby
-def	statement_charges(line_item)
+def statement_charges(line_item)
   cost = line_item.cost
   tax_rate = line_item.tax_rate
   item_name = line_item.name
@@ -97,7 +97,7 @@ If several parameters always fit together, combine them with **Introduce Paramet
 Consider the following code: 
 
 ```ruby
-def	statement_charges_between_inclusive(customer, start_date, end_date)
+def statement_charges_between_inclusive(customer, start_date, end_date)
   ...
 end
 
@@ -113,7 +113,7 @@ def date_range(start_date, end_date)
   ...
 end
 
-def	statement_charges_between_inclusive(customer, date_range)
+def statement_charges_between_inclusive(customer, date_range)
   ...
 end
 
@@ -129,7 +129,7 @@ If a parameter is used as a flag to dispatch different behaviour, use **Remove F
 Consider the following code:
 
 ```ruby
-def	statement_charges(cost, tax_rate, item_name, item_id, with_discount)
+def statement_charges(cost, tax_rate, item_name, item_id, with_discount)
   ...
 end
 ```
@@ -137,12 +137,12 @@ end
 Using *Remove Flag Argument*, we can reduce the method parameters by one(1) and increase the method readability:
 
 ```ruby
-def	statement_charges(cost, tax_rate, item_name, item_id)
+def statement_charges(cost, tax_rate, item_name, item_id)
   with_discount = false
   ...
 end
 
-def	statement_charges_with_discount(cost, tax_rate, item_name, item_id)
+def statement_charges_with_discount(cost, tax_rate, item_name, item_id)
   with_discount = true
   ...
 end
@@ -172,17 +172,17 @@ Using *Combine Functions into Class*:
 
 ```ruby
 class LineItem
-	def cost
-  ...
-	end
+  def cost
+    ...
+  end
 
-	def tax
-  ...
-	end
+  def tax
+    ...
+  end
 
-	def total
-  ...
-	end
+  def total
+    ...
+  end
 end
 ```
 
